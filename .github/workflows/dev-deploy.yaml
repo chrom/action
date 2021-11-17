@@ -6,10 +6,6 @@ jobs:
     runs-on: [self-hosted]
 #    runs-on: ubuntu-latest
     environment: development
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./app
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -26,4 +22,3 @@ jobs:
           curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/template | bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: ls -la
-      - run: tree -a
