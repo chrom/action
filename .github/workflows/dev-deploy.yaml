@@ -23,5 +23,5 @@ jobs:
             mv docker-magento/compose/* ./
             mv docker-magento/compose/.gitignore ./
             mv docker-magento.compose/.vscode ./
-            rm -rdf compose
+            rm -rdf docker-magento/compose
       - run: echo "🍏 This job's status is ${{ job.status }}."
