@@ -18,4 +18,12 @@ jobs:
           repository: markshust/docker-magento
           path: docker-magento
           ref: master
+          ssh-strict: true
+          submodules: false
+      - name: Clean foler
+      - run: |
+          mv docker-magento/compose/* ./
+          mv docker-magento/compose/.gitignore ./
+          mv docker-magento.compose/.vscode ./
+          rm -rdf docker-magento/compose
       - run: echo "🍏 This job's status is ${{ job.status }}."
