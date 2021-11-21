@@ -21,7 +21,7 @@ jobs:
           ssh-strict: true
           submodules: false
       - name: Clean folder
-      - run: |
+        run: |
           mv docker-magento/compose/* ./
           mv docker-magento/compose/* ./
           mv docker-magento/compose/.gitignore ./
