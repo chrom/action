@@ -4,7 +4,7 @@ jobs:
   deploy_dev:
     name: Deploy Docker
     runs-on: [self-hosted]
-#    runs-on: ubuntu-latest
+    #    runs-on: ubuntu-latest
     environment: development
     steps:
       - name: Check out repository code
@@ -12,6 +12,7 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: |
           ls ${{ github.workspace }}
+          
       - name: Clone M2 markshust repo
         uses: actions/checkout@v2
         with:
@@ -20,11 +21,10 @@ jobs:
           ref: master
           ssh-strict: true
           submodules: false
+
       - name: Clean folder
         run: |
-          mv docker-magento/compose/* ./
-          mv docker-magento/compose/* ./
-          mv docker-magento/compose/.gitignore ./
-          mv docker-magento.compose/.vscode ./
-          rm -rdf docker-magento/compose
+          mv docker-magento/compose/* ./docker-magento
+          mv docker-magento/compose/.gitignore ./docker-magento
+          rm -rdfv docker-magento/compose
           echo "🍏 This job's status is ${{ job.status }}."
