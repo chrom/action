@@ -7,11 +7,6 @@ jobs:
     #    runs-on: ubuntu-latest
     environment: development
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: |
-          ls ${{ github.workspace }}
           
       - name: Clone M2 markshust repo
         uses: actions/checkout@v2
@@ -28,3 +23,13 @@ jobs:
           mv docker-magento/compose/.gitignore ./docker-magento
           rm -rdfv docker-magento/compose
           echo "🍏 This job's status is ${{ job.status }}."
+
+      
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          path: docker-magento/src
+          ref: ${GITHUB_REF##*/}
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: |
+          ls ${{ github.workspace }}
